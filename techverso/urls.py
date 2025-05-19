@@ -13,10 +13,8 @@ urlpatterns = [
     path('vagas/', include('vagas.urls')),
     path('cursos/', include('cursos.urls')),
     path('sobre/', include('sobre.urls')),
-    path("faq/", include("faq.urls")),
+    path("faq/", include("faq.urls")),]
     
-
-]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
