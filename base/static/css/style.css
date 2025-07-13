@@ -1,35 +1,39 @@
-/* ===========================
+/* =======================================
+   RESET BÁSICO
+======================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =======================================
    IMPORTS E FONTES
-=========================== */
+======================================= */
 @font-face {
   font-family: 'ArcadeGamer';
   src: url('fonts/ARCADECLASSIC.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
-.fonte-arcade {
+.fonte-arcade, h5, .cont h1 {
   font-family: 'ArcadeGamer', sans-serif;
 }
 
-/* ===========================
+/* =======================================
    ELEMENTOS GLOBAIS
-=========================== */
+======================================= */
 body {
-  background-image: url('../images/background-site.png');
+  background: url('../images/background-site.png') no-repeat center/cover;
   background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: multiply;
-  background-size: cover;
-  background-repeat: repeat;
-  color: white;
-  font-family: Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  position: relative;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 80px; /* ajuste conforme a altura do footer */
+}
+
 }
 
 h5 {
-  font-family: 'ArcadeGamer', sans-serif;
   color: #fff;
   font-size: 2rem;
 }
@@ -39,18 +43,23 @@ p {
   text-align: center;
 }
 
-/* ===========================
-   NAVBAR 
-=========================== */
+#subtitulo {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f5f5f5;
+}
+
+/* =======================================
+   NAVBAR
+======================================= */
 @media (max-width: 991.98px) {
   .navbar-collapse {
-    background-color: rgb(0, 0, 0);
+    background-color: #000;
     position: absolute;
     top: 0;
     right: 0;
     width: 100%;
     padding: 1rem 0;
-    box-sizing: border-box;
     border-radius: 0;
   }
 
@@ -58,7 +67,7 @@ p {
     color: #737373;
     font-size: 20px;
     padding: 1rem;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #fff;
   }
 
   .navbar-collapse .nav-link:hover {
@@ -74,9 +83,9 @@ p {
   }
 }
 
-/* ===========================
-   CAROUSEL 
-=========================== */
+/* =======================================
+   CAROUSEL
+======================================= */
 .carousel-item {
   height: calc(95vh - 130px);
   width: 100%;
@@ -86,19 +95,19 @@ p {
 .carousel-caption {
   position: absolute;
   bottom: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.863) 85%, transparent);
+  left: 0;
+  width: 100%;
   padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.863) 85%, transparent);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%; /* Adicionando esta linha */
-  left: 0; /* Garante que a legenda começa na borda esquerda */
 }
 
-/* ===========================
-   FOOTER 
-=========================== */
+/* =======================================
+   FOOTER
+======================================= */
 .footer {
   position: fixed;
   bottom: 0;
@@ -111,7 +120,7 @@ p {
 }
 
 .footer a {
-  color: white;
+  color: #fff;
   margin: 0 15px;
   font-size: 1.5em;
   transition: color 0.3s;
@@ -121,95 +130,201 @@ p {
   color: #ccc;
 }
 
-/* ===========================
-   CONTAINER PERSONALIZADO 
-=========================== */
+/* =======================================
+   CONTAINER PERSONALIZADO
+======================================= */
 .cont {
   width: 40%;
   margin: 2rem auto 1rem;
   padding-top: 1rem;
-  box-sizing: border-box;
   text-align: center;
   font-size: 18px;
 }
 
 .cont h1 {
-  font-family: ArcadeGamer, Helvetica, sans-serif;
   font-size: 30px;
-  margin: 0 0 2rem;
-  overflow-wrap: break-word;
+  margin-bottom: 2rem;
   word-wrap: break-word;
 }
 
+/* =======================================
+   CURSOS DIVULGADOS
+======================================= */
+.cursos-divulgados {
+  width: 100vw;
+  max-width: 100%;
+  padding: 20px 40px;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  margin: 20px 0;
+  color: #e0e0e0;
+}
 
+.cursos-divulgados .tabela-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #444;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+
+/* =======================================
+   TABELA DE CURSOS
+======================================= */
 .tabela-wrapper {
-    overflow-x: auto;
-    margin-top: 20px;
-}
-
-.tabela-titulo {
-    font-size: 24px;
-    margin-top: 40px;
-    color: white;
-}
-
-.tabela-subtitulo {
-    font-size: 14px;
-    color: #ddd;
-    margin-bottom: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  margin-top: 20px;
 }
 
 .tabela-cursos {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    background-color: #fff;
-    color: #000;
-    text-align: left;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: #fff;
+  color: #000;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-.tabela-cursos th,
-.tabela-cursos td {
-    border: 1px solid #ccc;
-    padding: 10px 12px;
+.tabela-cursos th, .tabela-cursos td {
+  border: 1px solid #ccc;
+  padding: 10px 12px;
 }
 
 .tabela-cursos thead th {
-    background-color: #f1f1f1;
-    font-weight: bold;
+  background: #f1f1f1;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .tabela-cursos tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+  background: #f9f9f9;
 }
 
 .tabela-cursos a {
-    color: #0645ad;
-    text-decoration: none;
+  color: #0645ad;
+  text-decoration: none;
 }
 
 .tabela-cursos a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-/*Recurso para rolagem na tabela de ofertas de cursos*/
-
-   .tabela-wrapper {
-    max-height: 400px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
+.tabela-titulo {
+  font-size: 24px;
+  margin-top: 40px;
+  color: #fff;
 }
 
-.tabela-cursos {
-    width: 100%;
-    border-collapse: collapse;
+.tabela-subtitulo {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 15px;
 }
 
-.tabela-cursos thead th {
-    position: sticky;
-    top: 0;
-    background-color: #f1f1f1;
-    z-index: 1;
+/* =======================================
+   FORMULÁRIO
+======================================= */
+.formulário {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  color: #e0e0e0;
 }
 
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #f5f5f5;
+}
+
+small {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+  color: #b0b0b0;
+}
+
+textarea {
+  width: 100%;
+  background: #2c2c2c;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+  border-color: #6200ea;
+  outline: none;
+}
+
+input[type="radio"] {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+input[type="radio"] + label {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #6200ea, #3700b3);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(98, 0, 234, 0.5);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #3700b3, #6200ea);
+  transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* =======================================
+   RESPONSIVIDADE
+======================================= */
+@media (max-width: 768px) {
+  .formulário {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .formulário {
+    padding: 1rem;
+  }
+  
+  textarea {
+    font-size: 0.9rem;
+  }
+  
+  button[type="submit"] {
+    font-size: 1rem;
+  }
+}
