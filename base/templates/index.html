@@ -2,7 +2,9 @@
 {% load static %}  <!-- Adicione esta linha aqui -->
 {% block title %}TechVerso{% endblock %}
 {% block content %}
-	
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/glitch.js' %}"></script>
+
 
 <div id="carouselExampleCaptions" class="carousel slide">
   <div class="carousel-indicators">
@@ -11,66 +13,104 @@
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
   </div>
-  
+
   <div class="carousel-inner">
+    <!-- Slide 1 -->
     <div class="carousel-item active">
       <a href="{% url 'index' %}">
-        <img src="{% static 'images/astro_officesiren.jpeg' %}" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>BEM-VINDO AO TECHVERSO</h5>
-          <p>Exploração sem limites começa aqui!</p>
-        </div>
+        <img src="{% static 'images/astro_officesiren.png' %}" class="d-block w-100" alt="...">
       </a>
+      <div class="carousel-caption-below">
+        <h5 class="glitch-text" data-text="BEM-VINDO AO TECHVERSO">BEM-VINDO AO TECHVERSO</h5>
+        <p>Exploração sem limites começa aqui!</p>
+      </div>
     </div>
 
+    <!-- Slide 2 -->
     <div class="carousel-item">
       <a href="{% url 'vagas' %}">
-        <img src="{% static 'images/astro_chamingven.jpeg' %}" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>V.E.N. - Vagas, Estágio e Network</h5>
-          <p>Conecte-se ao seu universo de oportunidades!</p>
-        </div>
+        <img src="{% static 'images/astro_chamingven.png' %}" class="d-block w-100" alt="...">
       </a>
+      <div class="carousel-caption-below">
+        <h5 class="glitch-text" data-text="V.E.N. - Vagas, Estágio e Network">V.E.N. - Vagas, Estágio e Network</h5>
+        <p>Conecte-se ao seu universo de oportunidades!</p>
+      </div>
     </div>
 
+    <!-- Slide 3 -->
     <div class="carousel-item">
       <a href="{% url 'faq' %}">
-        <img src="{% static 'images/astroquestion.jpeg' %}" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>FAQ</h5>
-          <p>Perdido em órbita? Navegue pelas respostas!</p>
-        </div>
+        <img src="{% static 'images/astroquestion.png' %}" class="d-block w-100" alt="...">
       </a>
+      <div class="carousel-caption-below">
+        <h5 class="glitch-text" data-text="FAQ">FAQ</h5>
+        <p>Perdido em órbita? Navegue pelas respostas!</p>
+      </div>
     </div>
 
+    <!-- Slide 4 -->
     <div class="carousel-item">
       <a href="https://linktr.ee/TechVersoBR" target="_blank" rel="noopener noreferrer">
-        <img src="{% static 'images/astroinfluencer.jpeg' %}" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>SIGA NOSSAS REDES</h5>
-          <p>O Techverso está em todas as frequências!</p>
-        </div>
+        <img src="{% static 'images/astroinfluencer.png' %}" class="d-block w-100" alt="...">
       </a>
+      <div class="carousel-caption-below">
+        <h5 class="glitch-text" data-text="SIGA NOSSAS REDES">SIGA NOSSAS REDES</h5>
+        <p>O Techverso está em todas as frequências!</p>
+      </div>
     </div>
   </div>
-  
+
+  <!-- Controles -->
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
 </div>
 
-
-
-<div class="cont">
-    <h1>Quer saber a sua nota bimestral?</h1>
-    <p>Confira a calculadora da UNIVESP</p>
-    <a href="{% url 'calculadora' %}" class="btn btn-secondary btn-lg">Clique aqui!</a>
+<div class="glitch-container">
+<div class="glitch-frame">
+  <span>
+   <h1 class="glitch-text" data-text="Quer saber a sua nota bimestral?">Quer saber a sua nota bimestral?</h1>
+   <p>Confira a calculadora da UNIVESP</p>
+   <a href="{% url 'calculadora' %}" class="btn btn-secondary btn-lg">Clique aqui!</a>
+  </span>
 </div>
+
+
+<div class="glitch-frame">
+  <span>
+   <h1 class="glitch-text" data-text="Cursos, Projetos e etc.">Cursos, Projetos e etc.</h1>
+   <p>Este espaço é dedicado à divulgação de cursos, sejam eles pagos ou gratuitos, projetos pessoais ou profissionais. Esses projetos podem estar hospedados no GitHub ou em uma página de portfólio. Além disso, incentivamos a indicação de produtores de conteúdo, como YouTubers.</p>
+   <P>Utilize o formulário abaixo para adicionar novas informações. ATENÇÃO: Certifique-se de verificar se o que você deseja compartilhar ainda não está listado.</p>
+    <p>Agradecemos por contribuir para a comunidade!</p>
+  </span>
+</div>
+
+<div class="glitch-frame">
+  <span>
+   <h1 class="glitch-text" data-text="V.E.N - Vagas, estágios e networking">V.E.N - Vagas, estágios e networking</h1>
+   <p>Este espaço é destinado à divulgação de vagas de trabalho, estágios remunerados ou não, e para networking. Nesse último caso, os usuários podem compartilhar seus perfis no LinkedIn ou em outras redes sociais, seus portfólios ou páginas pessoais. NUNCA DIVULGUE DADOS PESSOAIS.</p>
+   <P>Utilize o formulário abaixo para adicionar novas informações. ATENÇÃO: Verifique se a informação que você deseja compartilhar ainda não está listada.</p>
+    <p>Lembre-se de respeitar as diretrizes de privacidade e nunca compartilhar informações pessoais sensíveis.</p>
+  </span>
+</div>
+
+<div class="glitch-frame">
+  <span>
+   <h1 class="glitch-text" data-text="FAQs - Perguntas frequentes">FAQs - Perguntas frequentes</h1>
+   <p>Nos FAQs relacionamos as respostas para as perguntas mais comuns e frequentes, que surgiram nos grupos do TechVerso.</p>
+ </div>
+
+ <div class="glitch-frame">
+  <span>
+   <h1 class="glitch-text" data-text="Manuais e Tutoriais">Manuais e Tutoriais</h1>
+   <p>Aqui organizamos e lincamos os diversos manuais, tutoriais e alguns regulamentos.</p>
+ </div>
+  </div>
 
 
 	<div class="social">

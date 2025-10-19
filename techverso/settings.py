@@ -1,3 +1,17 @@
+from dotenv import load_dotenv
+import os
+from pathlib import Path
+
+# Caminho base do projeto
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Carrega o .env
+load_dotenv(dotenv_path=BASE_DIR / ".env")
+
+# Agora você pode usar:
+SECRET_KEY = os.getenv("SECRET_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
 from pathlib import Path
 import os
 from django.contrib.messages import constants
