@@ -8,15 +8,11 @@
 }
 
 /* =======================================
-   IMPORTS E FONTES
+   FONTES
 ======================================= */
 @font-face {
   font-family: 'ArcadeGamer';
   src: url('fonts/ARCADECLASSIC.ttf') format('truetype');
-}
-
-.fonte-arcade, h5, .cont h1 {
-  font-family: 'ArcadeGamer', sans-serif;
 }
 
 /* =======================================
@@ -28,9 +24,19 @@ body {
   background-blend-mode: multiply;
   color: #e0e0e0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding-bottom: 80px; /* ajuste conforme a altura do footer */
+  padding-bottom: 80px;
 }
 
+h1, h5, .fonte-arcade, .cont h1 {
+  font-family: 'ArcadeGamer', sans-serif;
+}
+
+h1 {
+  position: relative;
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+}
 
 h5 {
   color: #fff;
@@ -52,52 +58,31 @@ p {
    NAVBAR
 ======================================= */
 .navbar {
-    background-color: rgba(0, 0, 0, 0.5); /* transparente com fundo escuro */
-    backdrop-filter: blur(10px) saturate(150%);
-    -webkit-backdrop-filter: blur(10px) saturate(150%);
-    transition: all 0.3s ease; /* suaviza mudanças no hover */
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  transition: all 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover:before {
-    transform: rotate(25deg) translateX(20%);
+  transform: rotate(25deg) translateX(20%);
 }
 
-.navbar-nav .nav-link:hover{
-    
-    color: #ffccff; }
+.navbar-nav .nav-link:hover {
+  color: #ffccff;
+}
 
-@media (max-width: 991.98px) {
-  .navbar-collapse {
-    background-color: rgba(0, 0, 0, 0.05);
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    padding: 1rem 0;
-    border-radius: 0;
-    backdrop-filter: blur(10px) saturate(150%);
-    -webkit-backdrop-filter: blur(10px) saturate(150%);
-    box-shadow: 0 0 0px cyan; /* reflexo magenta */
-  }
-
-  .navbar-collapse .nav-link {
-    color: #737373;
-    font-size: 20px;
-    padding: 1rem;
-    border-bottom: 1px solid #fff;
-  }
-
-  .navbar-collapse .nav-link:hover {
-    color: cyan;
-  }
-
-  .navbar-collapse .nav-item:last-child .nav-link {
-    border-bottom: none;
-  }
-
-  .navbar-toggler {
-    border: none;
-  }
+.navbar-led {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #00ffff, #ff00ff, #00ff00);
+  box-shadow: 0 0 10px 2px #00ffff;
+  border-radius: 2px;
+  z-index: 10;
 }
 
 /* =======================================
@@ -105,44 +90,40 @@ p {
 ======================================= */
 
 
-.carousel-item img {
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
-  position: relative;  
-  margin: 0 auto; 
-  width: 100%;    
-  display: block;  
-  height: auto; /* Define altura fixa */
-  object-fit: contain;
+#carouselExampleCaptions {
   width: 100%;
-  aspect-ratio: 2/1; /* Ajuste para a proporção desejada */
-  max-width: 1000px;
- 
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 70vh;         /* altura ajustável conforme o design desejado */
+  object-fit: cover;    /* cobre toda a área sem distorcer */
+  display: block;
+  margin: 0;
+  border-radius: 0;
+}
+
+.carousel-inner {
+  width: 100%;
+  overflow: hidden; /* evita barras de rolagem laterais */
 }
 
 .carousel-indicators {
-  bottom: -30px !important; /* empurra os indicadores para baixo */
-}
-
-/* Texto abaixo da imagem */
-.carousel-caption-below {
-  text-align: center;
-  padding: 20px 0;
-  color: #fff;
+  bottom: 10px;
 }
 
 .carousel-caption-below {
-  background: rgba(0,0,0,0.45);
-  border-radius: 6px;
-  padding: 12px 18px;
-  position: relative;  /* garante que o elemento apareça */
-  z-index: 10;         /* fica acima de qualquer imagem */
-  text-align: center;
-  padding: 20px 0;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.45);
   color: #fff;
-  background: transparent;
+  text-align: center;
+  padding: 12px 24px;
+  border-radius: 8px;
 }
 
 .carousel-caption-below h5,
@@ -150,18 +131,10 @@ p {
   margin: 0;
 }
 
-/* =======================================
-   GLITCH ESTÁTICO PARA H1
-======================================= */
-h1 {
-  font-family: 'ArcadeGamer', sans-serif;
-  position: relative;
-  color: white;
-  font-size: 3rem;
-  text-align: center;
-}
 
-/* Camadas coloridas */
+/* =======================================
+   EFEITO GLITCH PARA H1
+======================================= */
 h1::before,
 h1::after {
   content: attr(data-text);
@@ -169,30 +142,32 @@ h1::after {
   top: 0;
   left: 0;
   font-family: 'ArcadeGamer', sans-serif;
-  z-index: -1; /* atrás do texto principal */
+  z-index: -1;
 }
 
-/* Camada ciano */
 h1::before {
   color: cyan;
   transform: translate(2px, 0);
 }
 
-/* Camada amarelo */
 h1::after {
   color: yellow;
   transform: translate(-2px, 0);
 }
 
-
-/* Efeito glitch no texto */
+/* =======================================
+   GLITCH TEXTOS E QUADROS
+======================================= */
 .glitch-text {
+  font-family: 'ArcadeGamer', monospace;
   position: relative;
   font-size: 2.4rem;
   font-weight: bold;
   color: #fff;
+  text-align: center;
   display: inline-block;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+  user-select: none;
 }
 
 .glitch-text::before,
@@ -206,84 +181,50 @@ h1::after {
 .glitch-text::before { color: cyan; z-index: -1; transform: translate(-2px, 2px); }
 .glitch-text::after  { color: magenta; z-index: -1; transform: translate(2px, -2px); }
 
-@keyframes glitchBefore {
-  0%   { transform: translate(0,0); clip-path: inset(0 0 80% 0); }
-  20%  { transform: translate(-4px, -2px); clip-path: inset(10% 0 60% 0); }
-  40%  { transform: translate(3px, 2px); clip-path: inset(40% 0 20% 0); }
-  60%  { transform: translate(-3px, 1px); clip-path: inset(70% 0 0 0); }
-  80%  { transform: translate(4px, -1px); clip-path: inset(20% 0 50% 0); }
-  100% { transform: translate(0,0); clip-path: inset(0 0 80% 0); }
-}
-
-@keyframes glitchAfter {
-  0%   { transform: translate(0,0); clip-path: inset(60% 0 0 0); }
-  20%  { transform: translate(4px, 2px); clip-path: inset(20% 0 40% 0); }
-  40%  { transform: translate(-3px, -2px); clip-path: inset(0 0 70% 0); }
-  60%  { transform: translate(3px, -1px); clip-path: inset(30% 0 30% 0); }
-  80%  { transform: translate(-4px, 1px); clip-path: inset(10% 0 60% 0); }
-  100% { transform: translate(0,0); clip-path: inset(60% 0 0 0); }
-}
-
-/* ===========
-divs com glitch
-=========*/
 .glitch-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 2rem;
   padding: 2rem;
   justify-items: center;
 }
-/* Zig-zag: alterna verticalmente */
-.glitch-frame:nth-child(3n+1) { align-self: center; }
-.glitch-frame:nth-child(3n+2) { align-self: start; }
-.glitch-frame:nth-child(3n+3) { align-self: end; }
-/* Responsivo: 2 colunas */
-@media (max-width: 900px) {
-  .glitch-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
-  .glitch-frame:nth-child(3n+1),
-  .glitch-frame:nth-child(3n+2),
-  .glitch-frame:nth-child(3n+3) {
-    align-self: center; /* centraliza em 2 colunas */
-  }
-}
-
-/* Responsivo: 1 coluna */
-@media (max-width: 600px) {
-  .glitch-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* =======================================
-   FOOTER
-======================================= */
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.05);
-  color: #737373;
-  backdrop-filter: blur(10px) saturate(150%);
-  -webkit-backdrop-filter: blur(10px) saturate(150%);
-  box-shadow: 0 0 0px cyan; /* reflexo magenta */
-  text-align: center;
-  padding: 10px 0;
-  z-index: 1000;
-}
-
-.footer a {
+.glitch-frame {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: bold;
   color: #fff;
-  margin: 0 15px;
-  font-size: 1.5em;
-  transition: color 0.3s;
+  border-radius: 2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  width: 90%;
+  min-width: 250px;
+  background-color: rgba(0,0,0,0.5);
 }
 
-.footer a:hover {
-  color: #00FF0A;
+.glitch-frame::before,
+.glitch-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 2rem;
+  border: 8px solid transparent;
+  pointer-events: none;
+  animation: glitch 2s infinite steps(1);
+}
+
+.glitch-frame::before {
+  border-color: #00FF0A;
+  transform: translate(2px, -2px);
+}
+
+.glitch-frame::after {
+  border-color: #F307EF;
+  transform: translate(-3px, 3px);
 }
 
 /* =======================================
@@ -304,7 +245,7 @@ divs com glitch
 }
 
 /* =======================================
-   CURSOS DIVULGADOS
+   CURSOS DIVULGADOS / TABELAS
 ======================================= */
 .cursos-divulgados {
   width: 100vw;
@@ -317,21 +258,13 @@ divs com glitch
   color: #e0e0e0;
 }
 
-.cursos-divulgados .tabela-wrapper {
-  max-width: 100%;
+.tabela-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
   overflow-x: auto;
   border-radius: 12px;
   border: 1px solid #444;
   box-shadow: 0 2px 8px rgba(0,0,0,0.7);
-}
-
-/* =======================================
-   TABELA DE CURSOS
-======================================= */
-.tabela-wrapper {
-  max-height: 400px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
   margin-top: 20px;
 }
 
@@ -386,7 +319,7 @@ divs com glitch
 /* =======================================
    FORMULÁRIO
 ======================================= */
-.formulário {
+.formulario {
   max-width: 600px;
   margin: 2rem auto;
   padding: 2rem;
@@ -463,127 +396,231 @@ button[type="submit"]:active {
 }
 
 /* =======================================
-   RESPONSIVIDADE
+   FOOTER
 ======================================= */
-@media (max-width: 768px) {
-  .formulário {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .formulário {
-    padding: 1rem;
-  }
-  
-  textarea {
-    font-size: 0.9rem;
-  }
-  
-  button[type="submit"] {
-    font-size: 1rem;
-  }
-}
-
-
-/*=========================
-GLICTH DIC
-========================= */
-.glitch-frame {
-  position: relative;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
-  border-radius: 2rem;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  width: 90%; 
-  min-width: 250px;
-  box-sizing: border-box;
-  background-color: rgba(0,0,0,0.5);
-}
-
-.glitch-frame::before,
-.glitch-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 2rem;
-  border: 8px solid transparent;
-  pointer-events: none;
-  animation: glitch 2s infinite steps(1);
-}
-
-.glitch-frame::before {
-  border-color: #00FF0A;
-  transform: translate(2px, -2px);
-}
-
-.glitch-frame::after {
-  border-color: #F307EF;
-  transform: translate(-3px, 3px);
-}
-
-/* ===============
-glitch título
-===================*/
-
-/* Adapte os seletores para a classe que você usará */
-.glitch-text {
-  /* ... (Resto do estilo base como a fonte, cor branca, position: relative) */
-  font-family: 'ArcadeGamer', monospace; 
-  color: #fff;
-  position: relative;
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #737373;
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  box-shadow: 0 0 0px cyan;
   text-align: center;
-  user-select: none;}
-  
-  /*=======================================
-  GLASS BUTTON
-  ===================================== */
+  padding: 10px 0;
+  z-index: 1000;
+}
 
+.footer a {
+  color: #fff;
+  margin: 0 15px;
+  font-size: 1.5em;
+  transition: color 0.3s;
+}
 
+.footer a:hover {
+  color: #00FF0A;
+}
+
+/* =======================================
+   GLASS BUTTON
+======================================= */
 .glass-btn {
-    position: relative;
-    padding: 0.5rem 1.5rem;
-    font-weight: bold;
-    font-size: 1rem;
-    color: white;
-    background: #c83ac804; /* vidro translúcido */
-    border: 1px solid #ff00ff2c;
-    border-radius: 12px;
-    backdrop-filter: blur(10px) saturate(150%);
-    -webkit-backdrop-filter: blur(10px) saturate(150%);
-    box-shadow: 0 0 0px cyan; /* reflexo magenta */
-    transition: all 0.3s ease;
-    overflow: hidden;
+  position: relative;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  background: #c83ac804;
+  border: 1px solid #ff00ff2c;
+  border-radius: 12px;
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .glass-btn::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(120deg, transparent, rgba(255, 0, 255, 0.2), transparent);
-    transform: rotate(25deg);
-    transition: all 0.5s ease;
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent, rgba(255, 0, 255, 0.2), transparent);
+  transform: rotate(25deg);
+  transition: all 0.5s ease;
 }
 
 .glass-btn:hover::before {
-    transform: rotate(25deg) translateX(20%);
+  transform: rotate(25deg) translateX(20%);
 }
 
 .glass-btn:hover {
-    box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
-    color: #ffccff;
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
+  color: #ffccff;
 }
 
+/* =======================================
+   OFF-CANVAS MOBILE MENU
+======================================= */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 260px;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.928);
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 2rem 1rem;
+  transition: left 0.25s ease;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 15px rgba(0, 255, 255, 0.2);
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
 
+.mobile-menu.open {
+  left: 0;
+}
 
+#closeMenu {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  align-self: flex-end;
+  cursor: pointer;
+}
 
+.mobile-links {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
 
+.mobile-links li {
+  margin-bottom: 1.2rem;
+}
+
+.mobile-links li a {
+  color: #ffff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.mobile-links li a:hover {
+  color: #ffccff;
+}
+
+.mobile-social-icons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.mobile-social-icons .glass-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.08);
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.2), 0 0 6px rgba(0,255,255,0.2);
+  transition: all 0.3s ease;
+}
+
+.mobile-social-icons .glass-icon::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+  transform: translateY(-3px) scale(1.05);
+  animation: liquidFlow 4s linear infinite;
+  box-shadow: 0 0 10px #ffccff85;
+}
+
+.mobile-social-icons .glass-icon:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6),
+              inset 0 0 12px rgba(255,255,255,0.3);
+}
+
+.glass-icon.whatsapp:hover { color: #25D366; }
+.glass-icon.youtube:hover { color: #FF0000; }
+.glass-icon.github:hover { color: #fff; }
+.glass-icon.telegram:hover { color: #0088cc; }
+.glass-icon.linkedin:hover { color: #0A66C2; }
+
+/* =======================================
+   ANIMAÇÕES
+======================================= */
+@keyframes liquidFlow {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* =======================================
+   RESPONSIVIDADE
+======================================= */
+@media (max-width: 900px) {
+  .glitch-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .glitch-frame { align-self: center; }
+}
+
+@media (max-width: 768px) {
+  .formulario { padding: 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  .glitch-container { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .formulario { padding: 1rem; }
+  textarea { font-size: 0.9rem; }
+  button[type="submit"] { font-size: 1rem; }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.05);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding: 1rem 0;
+    border-radius: 0;
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    box-shadow: 0 0 0px cyan;
+  }
+
+  .navbar-collapse .nav-link {
+    color: #737373;
+    font-size: 20px;
+    padding: 1rem;
+    border-bottom: 1px solid #fff;
+  }
+
+  .navbar-collapse .nav-link:hover { color: cyan; }
+  .navbar-collapse .nav-item:last-child .nav-link { border-bottom: none; }
+  .navbar-toggler { border: none; display: block; }
+}
