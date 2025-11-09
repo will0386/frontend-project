@@ -5,7 +5,39 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* A parte principal cresce e empurra o footer para o fim */
+.content-wrap {
+  flex: 1;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+main {
+  flex: 1; /* empurra o footer para o fim */
+}
+
+
+main {
+  flex: 1; /* empurra o footer para o fim */
+}
+
 /* Remove qualquer espaço do navbar */
 .navbar {
   margin-bottom: 0 !important;
@@ -83,6 +115,7 @@ p {
   -webkit-backdrop-filter: blur(10px) saturate(150%);
   transition: all 0.3s ease;
   margin-bottom: 0;
+  z-index: 1000; /* garante que fique acima do carrossel */
 }
 
 .navbar-nav .nav-link:hover:before {
@@ -178,6 +211,13 @@ h1::after {
 /* =======================================
    GLITCH TEXTOS E QUADROS
 ======================================= */
+.glitch-container {
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: transparent;
+}
+
 .glitch-text {
   font-family: 'ArcadeGamer', monospace;
   position: relative;
@@ -185,7 +225,7 @@ h1::after {
   font-weight: bold;
   color: #fff;
   text-align: center;
-  display: inline-block;
+  display: block;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
   user-select: none;
 }
@@ -198,16 +238,17 @@ h1::after {
   left: 0;
 }
 
-.glitch-text::before { color: cyan; z-index: -1; transform: translate(-2px, 2px); }
-.glitch-text::after  { color: magenta; z-index: -1; transform: translate(2px, -2px); }
-
-.glitch-container {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 2rem;
-  padding: 2rem;
-  justify-items: center;
+.glitch-text::before {
+  color: cyan;
+  z-index: -1;
+  transform: translate(-2px, 2px);
 }
+.glitch-text::after {
+  color: magenta;
+  z-index: -1;
+  transform: translate(2px, -2px);
+}
+
 
 .glitch-frame {
   position: relative;
@@ -445,16 +486,14 @@ font-size: 1rem;
    FOOTER
 ======================================= */
 .footer {
-  position: fixed;
-  bottom: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 255, 255, 0.305);
   color: #737373;
   backdrop-filter: blur(10px) saturate(150%);
   -webkit-backdrop-filter: blur(10px) saturate(150%);
   box-shadow: 0 0 0px cyan;
   text-align: center;
-  padding: 10px 0;
+  padding: 70px 70px;
   z-index: 1000;
 }
 
@@ -514,20 +553,16 @@ font-size: 1rem;
 .mobile-menu {
   position: fixed;
   top: 0;
-  left: -280px;
+  left: -260px;
   width: 260px;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.928);
-  backdrop-filter: blur(8px);
-  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  transition: all 0.3s ease;
   padding: 2rem 1rem;
-  transition: left 0.25s ease;
-  z-index: 2000;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 2px 0 15px rgba(0, 255, 255, 0.2);
-  border-right: 1px solid rgba(255,255,255,0.1);
+  transition: left 0.3s ease;
+  z-index: 1050;
 }
 
 .mobile-menu.open {
@@ -537,40 +572,52 @@ font-size: 1rem;
 #closeMenu {
   background: none;
   border: none;
-  font-size: 2rem;
   color: white;
-  align-self: flex-end;
+  font-size: 2rem;
+  position: absolute;
+  top: 15px;
+  right: 20px;
   cursor: pointer;
 }
 
 .mobile-links {
   list-style: none;
-  padding: 0;
-  margin-top: 2rem;
+  padding: 3rem 0 0 0;
 }
 
 .mobile-links li {
-  margin-bottom: 1.2rem;
+    margin: 1rem 0;
 }
 
 .mobile-links li a {
-  color: #ffff;
+  color: white;
+  font-size: 1.3rem;
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 600;
-  transition: color 0.3s;
+  transition: color 0.2s ease;
 }
 
 .mobile-links li a:hover {
-  color: #ffccff;
+  color: #ffe6f2;
 }
 
 .mobile-social-icons {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 1rem;
   margin-top: 2rem;
+  justify-content: center;
+}
+
+/* =======================
+   BOTÃO HAMBÚRGUER
+======================= */
+.navbar-toggler {
+  border: none;
+  background: none;
+  z-index: 1100;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff66b2' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .mobile-social-icons .glass-icon {
@@ -588,18 +635,6 @@ font-size: 1rem;
   transition: all 0.3s ease;
 }
 
-.mobile-social-icons .glass-icon::after {
-  content: "";
-  position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 200%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
-  transform: translateY(-3px) scale(1.05);
-  animation: liquidFlow 4s linear infinite;
-  box-shadow: 0 0 10px #ffccff85;
-}
 
 .mobile-social-icons .glass-icon:hover {
   transform: translateY(-3px) scale(1.05);
@@ -617,8 +652,8 @@ font-size: 1rem;
    ANIMAÇÕES
 ======================================= */
 @keyframes liquidFlow {
-  0% { top: -100%; }
-  100% { top: 100%; }
+  0% { top: -50%; }
+  100% { top: 50%; }
 }
 
 /* =======================================
@@ -645,28 +680,198 @@ font-size: 1rem;
   button[type="submit"] { font-size: 1rem; }
 }
 
-@media (max-width: 991.98px) {
-  .navbar-collapse {
-    background-color: rgba(0, 0, 0, 0.05);
-    position: absolute;
+@media (min-width: 991.98px) {
+  .navbar {
+    position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     width: 100%;
-    padding: 1rem 0;
-    border-radius: 0;
+    height: auto;
+    z-index: 2000;
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px) saturate(150%);
     -webkit-backdrop-filter: blur(10px) saturate(150%);
-    box-shadow: 0 0 0px cyan;
+    transition: all 0.3s ease;
+
   }
 
-  .navbar-collapse .nav-link {
-    color: #737373;
-    font-size: 20px;
-    padding: 1rem;
-    border-bottom: 1px solid #fff;
+  .navbar-collapse {
+    display: none;
   }
 
-  .navbar-collapse .nav-link:hover { color: cyan; }
-  .navbar-collapse .nav-item:last-child .nav-link { border-bottom: none; }
-  .navbar-toggler { border: none; display: block; }
+  .navbar-toggler { border: none; z-index: 3000; }
+
+  /* ===========================
+     MENU LATERAL (customizado)
+  ============================ */
+
+
+  /* Quando ativado */
+  .mobile-menu.active {
+    transform: translateX(0);
+  }
+
+  /* Botão de fechar */
+  #closeMenu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+  }
+
+  /* Links do menu lateral */
+  .mobile-links {
+    list-style: none;
+    padding: 2rem 0 0 0;
+  }
+
+  .mobile-links li {
+    margin-bottom: 1.2rem;
+  }
+
+  .mobile-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+
+  .mobile-links a:hover::before {
+    transform: rotate(25deg) translateX(20%); }
+
+  .mobile-links a:hover{
+    transform: rotate(25deg) translateX(20%);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+    
+
+
+  /* Ícones sociais */
+  .mobile-social-icons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .mobile-social-icons a {
+    color: white;
+    font-size: 1.4rem;
+    transition: transform 0.2s;
+  }
+
+  .mobile-social-icons a:hover {
+    transform: scale(1.2);
+  }
+
+  /* Corrige logo e altura do navbar */
+  .navbar-brand img {
+    height: 100px !important;
+  }
+}
+
+/* =======================================
+   MEDIA QUERY (TELAS PEQUENAS)
+======================================= */
+
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 45vh; /* reduz altura no mobile */
+  }
+
+  /* Esconde setas de navegação */
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none !important;
+  }
+
+  /* Ajusta legenda */
+  .carousel-caption-below {
+    bottom: 15px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  /* Caso você use imagens menores para mobile */
+  .carousel-item img.mobile {
+    display: block;
+  }
+  .carousel-item img.desktop {
+    display: none;
+  }
+}
+
+/* =======================================
+   MEDIA QUERY (TELAS MÉDIAS)
+======================================= */
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .carousel-item img {
+    height: 60vh;
+  }
+
+  .carousel-caption-below {
+    bottom: 20px;
+    padding: 10px 20px;
+  }
+
+  /* Exibe versão desktop a partir daqui */
+  .carousel-item img.desktop {
+    display: block;
+  }
+  .carousel-item img.mobile {
+    display: none;
+  }
+  }
+
+  @media (max-width: 768px) {
+  .carousel-item img {
+    height: 70vh; /* reduz altura no mobile */
+  }
+
+  /* Esconde setas de navegação */
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none !important;
+  }
+
+  /* Ajusta legenda */
+  .carousel-caption-below {
+    top: 50%; /* move para o centro vertical */
+    bottom: auto; /* desativa a posição inferior */
+    left: 50%;
+    transform: translate(-50%, -50%); /* centraliza completamente */
+    background: rgba(0, 0, 0, 0.65); /* menos transparente para mais contraste */
+    padding: 20px 30px;
+    border-radius: 10px;
+    max-width: 90%; /* evita ultrapassar bordas */
+  }
+
+  .carousel-caption-below h5 {
+    font-size: 2rem;
+  }
+
+  .carousel-caption-below p {
+    font-size: 1,5rem;
+  }
+}
+
+/* Espaço superior só quando a navbar estiver fixa (telas médias pra cima) */
+@media (min-width: 992px) {
+  main {
+    padding-top: 130px; /* altura da navbar fixa */
+  }
+}
+
+/* Em telas menores (mobile), sem espaçamento extra */
+@media (max-width: 991px) {
+  main {
+    padding-top: 0;
+  }
 }

@@ -3,7 +3,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark border-bottom" 
-     style="background-color: rgba(0, 0, 0, 0.4); height: 120px;">
+     style="background-color: rgba(0, 0, 0, 0.13); height: 120px;">
 
   <div class="container">
 
@@ -12,11 +12,12 @@
       <img src="{% static 'images/techverso_transparente.png' %}" alt="Techverso" style="height: 150px;">
     </a>
 
-    <!-- BOTÃO RESPONSIVO -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <!-- BOTÃO MENU MOBILE -->
+<button class="navbar-toggler d-lg-none ms-auto" type="button" id="openMenu" aria-label="Abrir menu">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+      
 
     <!-- LINKS -->
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -75,31 +76,70 @@
   </div>
 </nav>
 
-<!-- Botão Hamburguer -->
-<button class="navbar-toggler" type="button" id="openMenu">
-  <span class="navbar-toggler-icon"></span>
-</button>
+
 
 <!-- Menu lateral -->
 <div id="mobileMenu" class="mobile-menu">
   <button id="closeMenu">&times;</button>
+
+      
   <ul class="mobile-links">
-    <li><a href="#home">Início</a></li>
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#cursos">Cursos</a></li>
-    <li><a href="#contato">Contato</a></li>
+
+        <li class="nav-item"><a class="nav-link" href="{% url 'index' %}" style="font-size: 25px;">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'cursos' %}" style="font-size: 25px;">Cursos</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'vagas' %}" style="font-size: 25px;">Vagas</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'calculadora' %}" style="font-size: 25px;">Calculadora</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'faq' %}" style="font-size: 25px;">FAQ</a></li>
   </ul>
 
+   <div class="d-flex align-items-center ms-3">
+        {% if user.is_authenticated %}
+        <span class="nav-text text-white me-2">{{ user.username }}</span>
+        <form method="POST" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button class="btn glass-btn" type="submit">Sair</button>
+        </form>
+        {% else %}
+        <a class="btn glass-btn me-2" href="{% url 'login' %}">Entrar</a>
+        <a class="btn glass-btn" href="{% url 'register' %}">Registrar</a>
+        {% endif %}
+      </div>
+      
   <div class="mobile-social-icons">
-    <a href="#" class="glass-icon whatsapp"><i class="bi bi-whatsapp"></i></a>
-    <a href="#" class="glass-icon youtube"><i class="bi bi-youtube"></i></a>
-    <a href="#" class="glass-icon github"><i class="bi bi-github"></i></a>
-    <a href="#" class="glass-icon linkedin"><i class="bi bi-linkedin"></i></a>
+    <a href="https://chat.whatsapp.com/JONCTfNFkn50vZR04NNw2Y" target="_blank" class="nav-link glass-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        
+       
+          <a href="https://www.youtube.com/@TechVersoTV" target="_blank" class="nav-link glass-icon youtube">
+            <i class="fab fa-youtube"></i>
+          </a>
+       
+       
+          <a href="https://github.com/UNIVESP23" target="_blank" class="nav-link glass-icon github">
+            <i class="fab fa-github"></i>
+          </a>
+        
+    
+          <a href="https://t.me/techversobr" target="_blank" class="nav-link glass-icon telegram">
+            <i class="fab fa-telegram"></i>
+          </a>
+       
+       
+          <a href="https://www.linkedin.com/in/techverso/" target="_blank" class="nav-link glass-icon linkedin">
+            <i class="fab fa-linkedin"></i>
+          </a>
   </div>
+ 
 </div>
+
+
+
+
+<script src="{% static 'js/navbar.js' %}"></script>
 
  
 <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- SEU CSS -->
-<script src="{% static 'js/navbar.js' %}"></script>       
+       
 
 
