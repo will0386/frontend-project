@@ -1,0 +1,877 @@
+/* =======================================
+   RESET BÁSICO
+======================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* A parte principal cresce e empurra o footer para o fim */
+.content-wrap {
+  flex: 1;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+main {
+  flex: 1; /* empurra o footer para o fim */
+}
+
+
+main {
+  flex: 1; /* empurra o footer para o fim */
+}
+
+/* Remove qualquer espaço do navbar */
+.navbar {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  border: none !important;
+}
+
+/* Garante que o carrossel encoste */
+.carousel {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Ajusta a logo se estiver maior que a navbar */
+.navbar-brand img {
+  height: 100px; /* igual ou menor que a altura da navbar */
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+/* =======================================
+   FONTES
+======================================= */
+@font-face {
+  font-family: 'ArcadeGamer';
+  src: url('fonts/ARCADECLASSIC.ttf') format('truetype');
+}
+
+/* =======================================
+   ELEMENTOS GLOBAIS
+======================================= */
+body {
+  background: url('../images/background-site.png') no-repeat center/cover;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 80px;
+}
+
+h1, h5, .fonte-arcade, .cont h1 {
+  font-family: 'ArcadeGamer', sans-serif;
+}
+
+h1 {
+  position: relative;
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+}
+
+h5 {
+  color: #fff;
+  font-size: 3rem;
+}
+
+p {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+#subtitulo {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f5f5f5;
+}
+
+/* =======================================
+   NAVBAR
+======================================= */
+.navbar {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  transition: all 0.3s ease;
+  margin-bottom: 0;
+  z-index: 1000; /* garante que fique acima do carrossel */
+}
+
+.navbar-nav .nav-link:hover:before {
+  transform: rotate(25deg) translateX(20%);
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffccff;
+}
+
+.navbar-led {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #00ffff, #ff00ff, #00ff00);
+  box-shadow: 0 0 10px 2px #00ffff;
+  border-radius: 2px;
+  z-index: 10;
+}
+
+/* =======================================
+   CAROUSEL
+======================================= */
+
+
+#carouselExampleCaptions {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 70vh;         /* altura ajustável conforme o design desejado */
+  object-fit: cover;    /* cobre toda a área sem distorcer */
+  display: block;
+  margin: 0;
+  border-radius: 0;
+}
+
+.carousel-inner {
+  width: 100%;
+  overflow: hidden; /* evita barras de rolagem laterais */
+}
+
+.carousel-indicators {
+  bottom: 10px;
+}
+
+.carousel-caption-below {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  text-align: center;
+  padding: 12px 24px;
+  border-radius: 8px;
+}
+
+.carousel-caption-below h5,
+.carousel-caption-below p {
+  margin: 0;
+}
+
+
+/* =======================================
+   EFEITO GLITCH PARA H1
+======================================= */
+h1::before,
+h1::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: 'ArcadeGamer', sans-serif;
+  z-index: -1;
+}
+
+h1::before {
+  color: cyan;
+  transform: translate(2px, 0);
+}
+
+h1::after {
+  color: yellow;
+  transform: translate(-2px, 0);
+}
+
+/* =======================================
+   GLITCH TEXTOS E QUADROS
+======================================= */
+.glitch-container {
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: transparent;
+}
+
+.glitch-text {
+  font-family: 'ArcadeGamer', monospace;
+  position: relative;
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  display: block;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+  user-select: none;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.glitch-text::before {
+  color: cyan;
+  z-index: -1;
+  transform: translate(-2px, 2px);
+}
+.glitch-text::after {
+  color: magenta;
+  z-index: -1;
+  transform: translate(2px, -2px);
+}
+
+
+.glitch-frame {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  width: 90%;
+  min-width: 250px;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.glitch-frame::before,
+.glitch-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 2rem;
+  border: 8px solid transparent;
+  pointer-events: none;
+  animation: glitch 2s infinite steps(1);
+}
+
+.glitch-frame::before {
+  border-color: #00FF0A;
+  transform: translate(2px, -2px);
+}
+
+.glitch-frame::after {
+  border-color: #F307EF;
+  transform: translate(-3px, 3px);
+}
+
+/* =======================================
+   CONTAINER PERSONALIZADO
+======================================= */
+.cont {
+  width: 40%;
+  margin: 2rem auto 1rem;
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 18px;
+}
+
+.cont h1 {
+  font-size: 30px;
+  margin-bottom: 2rem;
+  word-wrap: break-word;
+}
+
+/* =======================================
+   CURSOS DIVULGADOS / TABELAS
+======================================= */
+.cursos-divulgados {
+  width: 100vw;
+  max-width: 100%;
+  padding: 20px 40px;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  margin: 20px 0;
+  color: #e0e0e0;
+}
+
+.tabela-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #444;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  margin-top: 20px;
+}
+
+.tabela-cursos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: #fff;
+  color: #000;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.tabela-cursos th, .tabela-cursos td {
+  border: 1px solid #ccc;
+  padding: 10px 12px;
+}
+
+.tabela-cursos thead th {
+  background: #f1f1f1;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.tabela-cursos tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.tabela-cursos a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+.tabela-cursos a:hover {
+  text-decoration: underline;
+}
+
+.tabela-titulo {
+  font-size: 24px;
+  margin-top: 40px;
+  color: #fff;
+}
+
+.tabela-subtitulo {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+/* =======================================
+   FORMULÁRIO
+======================================= */
+.formulario {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  color: #e0e0e0;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #f5f5f5;
+}
+
+small {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+  color: #b0b0b0;
+}
+
+textarea {
+  width: 100%;
+  background: #2c2c2c;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+  border-color: #6200ea;
+  outline: none;
+}
+
+input[type="radio"] {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+input[type="radio"] + label {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+/* alvo mais específico e seguro */
+button.glass-btn[type="submit"] {
+  position: relative;            /* necessário para ::before absoluto */
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  background: rgba(60,200,58,0.04); /* substitui 8-digit hex por rgba */
+  border: 1px solid rgba(60,255,0,0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* pseudo-element - faz o brilho deslizar */
+button.glass-btn[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent, rgba(51,255,0,0.12), transparent);
+  transform: rotate(25deg);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+/* hover - anima o brilho e altera cor do texto */
+button.glass-btn[type="submit"]:hover::before {
+  transform: rotate(25deg) translateX(20%);
+}
+
+button.glass-btn[type="submit"]:hover {
+  box-shadow: 0 0 30px rgba(0,255,8,0.09); /* sintaxe correta */
+  color: #ccffd5;
+}
+
+div.mt-3{
+color: white;
+text-align: center;
+font-weight: bold;
+font-size: 1rem;
+
+}
+
+/* =======================================
+   FOOTER
+======================================= */
+.footer {
+  width: 100%;
+  background-color: rgba(0, 255, 255, 0.305);
+  color: #737373;
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  box-shadow: 0 0 0px cyan;
+  text-align: center;
+  padding: 70px 70px;
+  z-index: 1000;
+}
+
+.footer a {
+  color: #fff;
+  margin: 0 15px;
+  font-size: 1.5em;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #00FF0A;
+}
+
+/* =======================================
+   GLASS BUTTON
+======================================= */
+.glass-btn {
+  position: relative;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  background: #c83ac804;
+  border: 1px solid #ff00ff2c;
+  border-radius: 12px;
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.glass-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent, rgba(255, 0, 255, 0.2), transparent);
+  transform: rotate(25deg);
+  transition: all 0.5s ease;
+}
+
+.glass-btn:hover::before {
+  transform: rotate(25deg) translateX(20%);
+}
+
+.glass-btn:hover {
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
+  color: #ffccff;
+}
+
+/* =======================================
+   OFF-CANVAS MOBILE MENU
+======================================= */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  transition: all 0.3s ease;
+  padding: 2rem 1rem;
+  transition: left 0.3s ease;
+  z-index: 1050;
+}
+
+.mobile-menu.open {
+  left: 0;
+}
+
+#closeMenu {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.mobile-links {
+  list-style: none;
+  padding: 3rem 0 0 0;
+}
+
+.mobile-links li {
+    margin: 1rem 0;
+}
+
+.mobile-links li a {
+  color: white;
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.mobile-links li a:hover {
+  color: #ffe6f2;
+}
+
+.mobile-social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+/* =======================
+   BOTÃO HAMBÚRGUER
+======================= */
+.navbar-toggler {
+  border: none;
+  background: none;
+  z-index: 1100;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff66b2' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.mobile-social-icons .glass-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.08);
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.2), 0 0 6px rgba(0,255,255,0.2);
+  transition: all 0.3s ease;
+}
+
+
+.mobile-social-icons .glass-icon:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6),
+              inset 0 0 12px rgba(255,255,255,0.3);
+}
+
+.glass-icon.whatsapp:hover { color: #25D366; }
+.glass-icon.youtube:hover { color: #FF0000; }
+.glass-icon.github:hover { color: #fff; }
+.glass-icon.telegram:hover { color: #0088cc; }
+.glass-icon.linkedin:hover { color: #0A66C2; }
+
+/* =======================================
+   ANIMAÇÕES
+======================================= */
+@keyframes liquidFlow {
+  0% { top: -50%; }
+  100% { top: 50%; }
+}
+
+/* =======================================
+   RESPONSIVIDADE
+======================================= */
+@media (max-width: 900px) {
+  .glitch-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .glitch-frame { align-self: center; }
+}
+
+@media (max-width: 768px) {
+  .formulario { padding: 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  .glitch-container { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .formulario { padding: 1rem; }
+  textarea { font-size: 0.9rem; }
+  button[type="submit"] { font-size: 1rem; }
+}
+
+@media (min-width: 991.98px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 2000;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    transition: all 0.3s ease;
+
+  }
+
+  .navbar-collapse {
+    display: none;
+  }
+
+  .navbar-toggler { border: none; z-index: 3000; }
+
+  /* ===========================
+     MENU LATERAL (customizado)
+  ============================ */
+
+
+  /* Quando ativado */
+  .mobile-menu.active {
+    transform: translateX(0);
+  }
+
+  /* Botão de fechar */
+  #closeMenu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+  }
+
+  /* Links do menu lateral */
+  .mobile-links {
+    list-style: none;
+    padding: 2rem 0 0 0;
+  }
+
+  .mobile-links li {
+    margin-bottom: 1.2rem;
+  }
+
+  .mobile-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+
+  .mobile-links a:hover::before {
+    transform: rotate(25deg) translateX(20%); }
+
+  .mobile-links a:hover{
+    transform: rotate(25deg) translateX(20%);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+    
+
+
+  /* Ícones sociais */
+  .mobile-social-icons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .mobile-social-icons a {
+    color: white;
+    font-size: 1.4rem;
+    transition: transform 0.2s;
+  }
+
+  .mobile-social-icons a:hover {
+    transform: scale(1.2);
+  }
+
+  /* Corrige logo e altura do navbar */
+  .navbar-brand img {
+    height: 100px !important;
+  }
+}
+
+/* =======================================
+   MEDIA QUERY (TELAS PEQUENAS)
+======================================= */
+
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 45vh; /* reduz altura no mobile */
+  }
+
+  /* Esconde setas de navegação */
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none !important;
+  }
+
+  /* Ajusta legenda */
+  .carousel-caption-below {
+    bottom: 15px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  /* Caso você use imagens menores para mobile */
+  .carousel-item img.mobile {
+    display: block;
+  }
+  .carousel-item img.desktop {
+    display: none;
+  }
+}
+
+/* =======================================
+   MEDIA QUERY (TELAS MÉDIAS)
+======================================= */
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .carousel-item img {
+    height: 60vh;
+  }
+
+  .carousel-caption-below {
+    bottom: 20px;
+    padding: 10px 20px;
+  }
+
+  /* Exibe versão desktop a partir daqui */
+  .carousel-item img.desktop {
+    display: block;
+  }
+  .carousel-item img.mobile {
+    display: none;
+  }
+  }
+
+  @media (max-width: 768px) {
+  .carousel-item img {
+    height: 70vh; /* reduz altura no mobile */
+  }
+
+  /* Esconde setas de navegação */
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none !important;
+  }
+
+  /* Ajusta legenda */
+  .carousel-caption-below {
+    top: 50%; /* move para o centro vertical */
+    bottom: auto; /* desativa a posição inferior */
+    left: 50%;
+    transform: translate(-50%, -50%); /* centraliza completamente */
+    background: rgba(0, 0, 0, 0.65); /* menos transparente para mais contraste */
+    padding: 20px 30px;
+    border-radius: 10px;
+    max-width: 90%; /* evita ultrapassar bordas */
+  }
+
+  .carousel-caption-below h5 {
+    font-size: 2rem;
+  }
+
+  .carousel-caption-below p {
+    font-size: 1,5rem;
+  }
+}
+
+/* Espaço superior só quando a navbar estiver fixa (telas médias pra cima) */
+@media (min-width: 992px) {
+  main {
+    padding-top: 130px; /* altura da navbar fixa */
+  }
+}
+
+/* Em telas menores (mobile), sem espaçamento extra */
+@media (max-width: 991px) {
+  main {
+    padding-top: 0;
+  }
+}

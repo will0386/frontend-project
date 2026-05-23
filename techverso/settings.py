@@ -32,7 +32,9 @@ DEBUG = True
 SECRET_KEY = 'django-insecure-cc1@c!hb-zhx@hy18xi4r-11-%53)c8g$l1!wrva=$#!7rwy^k'
   
 ALLOWED_HOSTS = ["127.0.0.1",
-                 "localhost",]
+                 "localhost",
+                 "192.168.3.2",
+                 "192.168.3.24"]
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'base', 'static'),]
@@ -114,7 +116,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'techverso',
-        'USER': 'techverso',
+        'USER': 'root',
         'PASSWORD': '1003',
         'HOST': 'localhost',
         'PORT': 3306,
@@ -186,14 +188,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "base/static"),  # Diretório onde os arquivos estáticos estão localizados
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
